@@ -1,11 +1,11 @@
 import { Schema, model } from 'mongoose';
 
-export const Meal = model('Meal', new Schema({
+export const mealSchema = new Schema({
 	name: {
 		type: String,
 		required: true,
 	},
-	descripiton: {
+	description: {
 		type: String,
 		required: true,
 	},
@@ -17,5 +17,12 @@ export const Meal = model('Meal', new Schema({
 		type: Boolean,
 		required: true,
 	},
+	user: {
+		type: Schema.Types.ObjectId,
+		required: true,
+		ref: 'User'
+	}
 
-}));
+});
+
+export const Meal = model('Meal', mealSchema );
